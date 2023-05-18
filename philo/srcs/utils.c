@@ -6,9 +6,11 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:11:46 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/18 20:04:33 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/18 21:46:07 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <sys/time.h>
 
 int	ft_strlen(char *str)
 {
@@ -55,4 +57,14 @@ int	is_positive_int(char *str)
 	if (i > 9)
 		return (0);
 	return (1);
+}
+
+long long	get_time(void)
+{
+	long long		time;
+	struct timeval	tv;
+
+	gettimeofday(&tv, 0);
+	time = tv.tv_sec * 1000 + (tv.tv_usec / 1000);
+	return (time);
 }
