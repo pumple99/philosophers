@@ -6,13 +6,16 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/18 19:57:37 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/21 20:46:37 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include <pthread.h>
 
-int	main(int argc, char *argv[])
+#include "philo.h"
+#include "structure.h"
+
+int	check_input(int argc, char *argv[])
 {
 	int	i;
 
@@ -24,4 +27,19 @@ int	main(int argc, char *argv[])
 		if (!is_positive_int(argv[i]))
 			return (write_err("Not positive or too big integer"));
 	}
+	return (0);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_common		info;
+	t_philo			*philos;
+	int				error;
+	
+	if (check_input(argc, argv))
+		return (1);
+	error = init_all(argc, argv, &info, philos);
+	if (!error)
+		run(philos);
+	free_all(info, philos);
 }
