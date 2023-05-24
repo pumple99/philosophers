@@ -6,11 +6,14 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:55:33 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 18:08:06 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:40:57 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <pthread.h>
 #include <stdlib.h>
+
+#include "structure.h"
 
 static void	destroy_fork_mutex(t_info *info)
 {

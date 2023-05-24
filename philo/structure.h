@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:52:07 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:15:04 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:32:53 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_info
 	int				*fork;
 	int				end_flag;
 	int				count_complete_philo;
-	t_argu			argu;
+	t_common		argu;
 	pthread_mutex_t	*fork_mutex;
 	pthread_mutex_t	message_mutex;
 	pthread_mutex_t	end_flag_mutex;
@@ -39,7 +39,7 @@ typedef struct s_info
 
 typedef struct s_philo
 {
-	t_argu		argu;
+	t_common	argu;
 	int			philo_index;
 	long long	last_eat_time;
 	int			eat_count;

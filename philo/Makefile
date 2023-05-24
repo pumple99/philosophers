@@ -6,7 +6,7 @@
 #    By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 15:20:31 by seunghoy          #+#    #+#              #
-#    Updated: 2023/05/18 19:51:10 by seunghoy         ###   ########.fr        #
+#    Updated: 2023/05/22 23:28:40 by seunghoy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJS_DIR := objs
 
 CHANGABLE_HEADERS = philo.h
 
-SRCS := $(addprefix $(SRCS_DIR)/, main.c err.c utils.c)
+SRCS := $(addprefix $(SRCS_DIR)/, main.c err.c utils.c init.c free_destroy.c)
 
 OBJS := $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
