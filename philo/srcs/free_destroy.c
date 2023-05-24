@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:55:33 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 23:40:57 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:43:34 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	destroy_fork_mutex(t_info *info)
 	int	idx;
 	int	total;
 
-	total = info->argu.number_of_philosophers;
+	total = info->number_of_philosophers;
 	idx = -1;
 	while (++idx < total)
 		pthread_mutex_destroy(info->fork_mutex + idx);
@@ -39,6 +39,7 @@ void	free_all(t_info *info, t_philo *philos, int error)
 	free(philos);
 	free(info->fork);
 	free(info->fork_mutex);
+	free(info->threads);
 }
 
 int	destroy_mutex_at_init_err(t_info *info, int success_num)

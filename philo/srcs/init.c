@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/23 00:01:21 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:43:13 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,24 @@ static void	info_value_init(int argc, char *argv[], t_info *info)
 {
 	info->end_flag = 0;
 	info->count_complete_philo = 0;
-	info->argu.number_of_philosophers = fool_atoi(argv[1]);
-	info->argu.time_to_die = fool_atoi(argv[2]);
-	info->argu.time_to_eat = fool_atoi(argv[3]);
-	info->argu.time_to_sleep = fool_atoi(argv[4]);
+	info->number_of_philosophers = fool_atoi(argv[1]);
+	info->time_to_die = fool_atoi(argv[2]);
+	info->time_to_eat = fool_atoi(argv[3]);
+	info->time_to_sleep = fool_atoi(argv[4]);
 	if (argc == 5)
 		return ;
-	info->argu.number_of_times_each_philosopher_must_eat = fool_atoi(argv[5]);
+	info->number_of_times_each_philosopher_must_eat = fool_atoi(argv[5]);
 }
 
 static int	malloc_init(t_info *info, t_philo **philos)
 {
-	info->fork = (int *)malloc(sizeof(int) * info->argu.number_of_philosophers);
+	info->fork = (int *)malloc(sizeof(int) * info->number_of_philosophers);
 	info->fork_mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
-	* info->argu.number_of_philosophers);
-	*philos = (t_philo *)malloc(sizeof(t_philo) \
-	* info->argu.number_of_philosophers);
-	if (info->fork && info->fork_mutex && *philos)
+	* info->number_of_philosophers);
+	*philos = (t_philo *)malloc(sizeof(t_philo) * info->number_of_philosophers);
+	info->threads = (pthread_t *)malloc(sizeof(pthread_t) \
+	* info->number_of_philosophers);
+	if (info->fork && info->fork_mutex && *philos && info->threads)
 		return (0);
 	return (1);
 }
@@ -47,7 +48,7 @@ static int	fork_mutex_init(t_info *info)
 	int	total;
 	int idx;
 
-	total = info->argu.number_of_philosophers;
+	total = info->number_of_philosophers;
 	idx = -1;
 	while (++idx < total)
 	{
@@ -62,14 +63,13 @@ static void	philo_value_init(t_info *info, t_philo *philos)
 	int	total;
 	int	idx;
 
-	info->argu.start_time = get_time();
-	total = info->argu.number_of_philosophers;
+	info->start_time = get_time();
+	total = info->number_of_philosophers;
 	idx = -1;
 	while (++idx < total)
 	{
-		philos[idx].argu = info->argu;
-		philos[idx].argu = idx + 1;
-		philos[idx].argu = info->argu.start_time;
+		philos[idx].philo_index = idx + 1;
+		philos[idx].last_eat_time = info->start_time;
 		philos[idx].eat_count = 0;
 		philos[idx].info = info;
 	}

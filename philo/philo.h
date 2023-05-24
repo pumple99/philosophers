@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:15:23 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 23:57:46 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:00:42 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PHILO_H
 
 # include "structure.h"
+
+//child_thread.c
+void		*routine(void *arg);
 
 //init.c
 int			init_all(int argc, char *argv[], t_info *info, t_philo **philos);

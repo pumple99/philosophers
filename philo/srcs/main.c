@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 23:34:41 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/24 18:02:05 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,24 @@
 #include "philo.h"
 #include "structure.h"
 
-int	check_input(int argc, char *argv[])
+static int	check_input(int argc, char *argv[]);
+static void	run(t_info *info, t_philo *philos);
+
+int	main(int argc, char *argv[])
+{
+	t_info		info;
+	t_philo		*philos;
+	int			error;
+
+	if (check_input(argc, argv))
+		return (1);
+	error = init_all(argc, argv, &info, &philos);
+	if (!error)
+		run(&info, philos);
+	free_all(&info, philos, error);
+}
+
+static int	check_input(int argc, char *argv[])
 {
 	int	i;
 
@@ -30,16 +47,25 @@ int	check_input(int argc, char *argv[])
 	return (0);
 }
 
-int	main(int argc, char *argv[])
+static void	run(t_info *info, t_philo *philos)
 {
-	t_info	info;
-	t_philo	*philos;
-	int		error;
+	int	idx;
+	int	idx2;
+	int	total;
 
-	if (check_input(argc, argv))
-		return (1);
-	error = init_all(argc, argv, &info, &philos);
-	// if (!error)
-	// 	run(philos);
-	free_all(&info, philos, error);
+	total = info->number_of_philosophers;
+	idx = -1;
+	while (++idx < total)
+	{
+		if (pthread_create(info->threads + idx, 0, routine, philos + idx))
+		{
+			pthread_mutex_lock(&info->end_flag_mutex);
+			info->end_flag = 1;
+			pthread_mutex_unlock(&info->end_flag_mutex);
+			break ;
+		}
+	}
+	idx2 = -1;
+	while (++idx2 < idx)
+		pthread_join(info->threads[idx2], 0);
 }
