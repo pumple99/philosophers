@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:52:07 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/24 17:40:39 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/25 21:34:14 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define STRUCTURE_H
 
 # include <pthread.h>
+
+typedef enum e_status
+{
+	for_right_hand,
+	for_left_hand,
+	right_hand_using,
+	left_hand_using
+}	t_status;
 
 typedef struct s_info
 {
@@ -24,7 +32,7 @@ typedef struct s_info
 	int				time_to_eat;
 	int				time_to_sleep;
 	int				number_of_times_each_philosopher_must_eat;
-	int				*fork;
+	t_status		*fork;
 	int				end_flag;
 	int				count_complete_philo;
 	pthread_mutex_t	*fork_mutex;

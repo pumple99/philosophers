@@ -6,14 +6,14 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/24 18:02:05 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:23:36 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <pthread.h>
 
-#include "philo.h"
-#include "structure.h"
+#include "../philo.h"
+#include "../structure.h"
 
 static int	check_input(int argc, char *argv[]);
 static void	run(t_info *info, t_philo *philos);

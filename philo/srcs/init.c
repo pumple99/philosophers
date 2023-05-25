@@ -6,16 +6,16 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/24 17:43:13 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/25 21:34:43 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <pthread.h>
 
-#include "philo.h"
-#include "structure.h"
-#include "err.h"
+#include "../philo.h"
+#include "../structure.h"
+#include "../err.h"
 
 static void	info_value_init(int argc, char *argv[], t_info *info)
 {
@@ -32,7 +32,20 @@ static void	info_value_init(int argc, char *argv[], t_info *info)
 
 static int	malloc_init(t_info *info, t_philo **philos)
 {
-	info->fork = (int *)malloc(sizeof(int) * info->number_of_philosophers);
+	int	idx;
+	int	total;
+
+	idx = -1;
+	total = info->number_of_philosophers;
+	info->fork = (t_status *)malloc(sizeof(t_status) * \
+	info->number_of_philosophers);
+	while (++idx < total)
+	{
+		if (idx % 2 == 0)
+			info->fork[idx] = for_right_hand;
+		else
+			info->fork[idx] = for_left_hand;
+	}
 	info->fork_mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
 	* info->number_of_philosophers);
 	*philos = (t_philo *)malloc(sizeof(t_philo) * info->number_of_philosophers);
@@ -63,7 +76,7 @@ static void	philo_value_init(t_info *info, t_philo *philos)
 	int	total;
 	int	idx;
 
-	info->start_time = get_time();
+	info->start_time = get_time_us();
 	total = info->number_of_philosophers;
 	idx = -1;
 	while (++idx < total)
