@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:15:23 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/25 20:52:25 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/26 21:27:16 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int			destroy_mutex_at_init_err(t_info *info, int success_num);
 int			ft_strlen(char *str);
 int			is_positive_int(char *str);
 int			fool_atoi(char *str);
+int			get_end_flag_value(t_philo *philo);
 
 //err.c
 int			write_err(char *str);

@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:20:39 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/25 21:47:39 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/05/26 21:54:03 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,18 @@ void	*routine(void *arg)
 	return (0);
 }
 
+static int	get_right_fork()
+{
+	
+}
+
 int	is_alive(t_philo *philo)
 {
-	if (get_time_us() <= philo->last_eat_time + philo->info->time_to_die)
+	if (get_time_us() <= philo->last_eat_time + \
+	philo->info->time_to_die * 1000 && !get_end_flag_value(philo))
 		return (1);
 	pthread_mutex_lock(&philo->info->end_flag_mutex);
-	info->end_flag = 1;
+	philo->info->end_flag = 1;
 	pthread_mutex_unlock(&philo->info->end_flag_mutex);
 	return (0);
 }
