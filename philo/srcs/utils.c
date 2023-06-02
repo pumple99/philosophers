@@ -6,11 +6,9 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:11:46 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/26 21:28:25 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/02 16:47:54 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <pthread.h>
 
 int	ft_strlen(char *str)
 {
@@ -57,14 +55,4 @@ int	is_positive_int(char *str)
 	if (i > 9)
 		return (0);
 	return (1);
-}
-
-int	get_end_flag_value(t_philo *philo)
-{
-	int	val;
-
-	pthread_mutex_lock(&philo->info->end_flag_mutex);
-	val = philo->info->end_flag;
-	pthread_mutex_unlock(&philo->info->end_flag_mutex);
-	return (val);
 }

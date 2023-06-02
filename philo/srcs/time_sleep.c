@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:11:21 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/25 20:52:08 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/02 21:55:05 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,23 @@ long long	get_time_us(void)
 	return (time);
 }
 
-void	optimize_sleep(int ms)
+void	optimize_sleep(long long start, long long sleep_time)
 {
-	long long	start_time;
-	long long	us;
-
-	start_time = get_time_us();
-	us = (long long)ms * 1000;
+	// if (sleep_time >= 2000)
+	// 	usleep(sleep_time - 1000);
 	while (1)
 	{
-		usleep(1000);
-		if (get_time_us() > start_time + us)
+		if (get_time_us() > start + sleep_time)
 			break ;
+		usleep(500);
 	}
 }
 
-long long	get_elapse_time(t_philo *philo)
+long long	get_elapse_time(t_philo *philo, long long now)
 {
 	long long	elapse_time;
 
-	elapse_time = philo->info->start_time - get_time_us();
+	elapse_time = now - philo->info->start_time;
 	elapse_time /= 1000;
 	return (elapse_time);
 }

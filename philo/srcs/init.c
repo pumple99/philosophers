@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/25 21:34:43 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/02 21:07:03 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ static void	info_value_init(int argc, char *argv[], t_info *info)
 	info->end_flag = 0;
 	info->count_complete_philo = 0;
 	info->number_of_philosophers = fool_atoi(argv[1]);
-	info->time_to_die = fool_atoi(argv[2]);
-	info->time_to_eat = fool_atoi(argv[3]);
-	info->time_to_sleep = fool_atoi(argv[4]);
+	info->time_to_die = fool_atoi(argv[2]) * (long long)1000;
+	info->time_to_eat = fool_atoi(argv[3]) * (long long)1000;
+	info->time_to_sleep = fool_atoi(argv[4]) * (long long)1000;
+	info->number_of_times_each_philosopher_must_eat = 0;
 	if (argc == 5)
 		return ;
 	info->number_of_times_each_philosopher_must_eat = fool_atoi(argv[5]);
@@ -59,7 +60,7 @@ static int	malloc_init(t_info *info, t_philo **philos)
 static int	fork_mutex_init(t_info *info)
 {
 	int	total;
-	int idx;
+	int	idx;
 
 	total = info->number_of_philosophers;
 	idx = -1;
@@ -81,7 +82,7 @@ static void	philo_value_init(t_info *info, t_philo *philos)
 	idx = -1;
 	while (++idx < total)
 	{
-		philos[idx].philo_index = idx + 1;
+		philos[idx].philo_index = idx;
 		philos[idx].last_eat_time = info->start_time;
 		philos[idx].eat_count = 0;
 		philos[idx].info = info;
