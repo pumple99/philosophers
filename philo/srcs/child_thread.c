@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:20:39 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/04 17:18:24 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/04 20:45:54 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// if (philo->philo_index % 2 == 1)
-	// 	usleep(100);
 	while (1)
 	{
 		if (get_fork(philo, for_right_hand))
@@ -122,5 +120,6 @@ static int	philo_sleep(t_philo *philo)
 		return (is_alive(philo), 1);
 	}
 	optimize_sleep(now, philo->info->time_to_sleep);
+	write_message(philo, THINKING);
 	return (0);
 }

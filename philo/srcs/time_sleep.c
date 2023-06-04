@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:11:21 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/04 16:46:24 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/04 18:07:55 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ long long	get_time_us(void)
 	struct timeval	tv;
 
 	gettimeofday(&tv, 0);
-	time = tv.tv_sec;
-	time = time * 1000000 + tv.tv_usec;
+	time = tv.tv_sec * 1000000 + tv.tv_usec;
 	return (time);
 }
 
