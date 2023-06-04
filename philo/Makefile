@@ -6,14 +6,14 @@
 #    By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 15:20:31 by seunghoy          #+#    #+#              #
-#    Updated: 2023/06/02 21:34:18 by seunghoy         ###   ########.fr        #
+#    Updated: 2023/06/04 16:06:39 by seunghoy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := philo
 CC := cc
 CFLAGS := -Werror -Wall -Wextra
-DEBUG_FLAGS := -g -fsanitize=thread
+DEBUG_FLAGS := -g #-fsanitize=thread
 SRCS_DIR := srcs
 OBJS_DIR := objs
 

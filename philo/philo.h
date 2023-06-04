@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:15:23 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/02 21:45:36 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/04 17:05:42 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void		*routine(void *arg);
 
 //child_thread_utils.c
 int			get_end_flag_value(t_philo *philo);
-void		write_message(t_philo *philo, char *str, long long now);
+long long	write_message(t_philo *philo, char *str);
 int			is_alive(t_philo *philo);
 
 //time_sleep.c

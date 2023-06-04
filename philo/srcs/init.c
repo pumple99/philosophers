@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/02 21:07:03 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/04 15:09:31 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static void	philo_value_init(t_info *info, t_philo *philos)
 		philos[idx].philo_index = idx;
 		philos[idx].last_eat_time = info->start_time;
 		philos[idx].eat_count = 0;
+		philos[idx].alive = 1;
 		philos[idx].info = info;
 	}
 }

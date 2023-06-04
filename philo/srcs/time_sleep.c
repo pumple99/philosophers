@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:11:21 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/02 21:55:05 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/04 16:46:24 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ long long	get_time_us(void)
 
 void	optimize_sleep(long long start, long long sleep_time)
 {
-	// if (sleep_time >= 2000)
-	// 	usleep(sleep_time - 1000);
+	if (sleep_time > 10000)
+		usleep(sleep_time - 5000);
 	while (1)
 	{
 		if (get_time_us() > start + sleep_time)
 			break ;
-		usleep(500);
+		usleep(1);
 	}
 }
 
