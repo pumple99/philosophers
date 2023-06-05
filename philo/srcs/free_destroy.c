@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 15:55:33 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/24 17:43:34 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 19:26:51 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ void	free_all(t_info *info, t_philo *philos, int error)
 		pthread_mutex_destroy(&info->end_flag_mutex);
 	if (error <= 3)
 		pthread_mutex_destroy(&info->count_complete_philo_mutex);
-	free(philos);
-	free(info->fork);
-	free(info->fork_mutex);
-	free(info->threads);
+	if (error <= 4)
+	{
+		free(philos);
+		free(info->fork);
+		free(info->fork_mutex);
+		free(info->threads);
+	}
 }
 
 int	destroy_mutex_at_init_err(t_info *info, int success_num)

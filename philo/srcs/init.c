@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/04 15:09:31 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 16:16:02 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include "../philo.h"
 #include "../structure.h"
-#include "../err.h"
 
 static void	info_value_init(int argc, char *argv[], t_info *info)
 {

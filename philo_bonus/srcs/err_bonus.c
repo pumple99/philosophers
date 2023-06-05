@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   err.h                                              :+:      :+:    :+:   */
+/*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/22 17:31:25 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:36:01 by seunghoy         ###   ########.fr       */
+/*   Created: 2023/05/18 19:09:14 by seunghoy          #+#    #+#             */
+/*   Updated: 2023/05/22 17:13:48 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ERR_H
-# define ERR_H
+#include <unistd.h>
+#include "philo.h"
 
-#endif
+int	write_err(char *str)
+{
+	write(2, str, ft_strlen(str));
+	write(2, "\n", 1);
+	return (1);
+}

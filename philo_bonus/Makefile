@@ -6,21 +6,21 @@
 #    By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 15:20:31 by seunghoy          #+#    #+#              #
-#    Updated: 2023/06/05 16:19:34 by seunghoy         ###   ########.fr        #
+#    Updated: 2023/06/05 15:35:43 by seunghoy         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := philo
+NAME := philo_bonus
 CC := cc
 CFLAGS := -Werror -Wall -Wextra
 DEBUG_FLAGS := -g #-fsanitize=thread
 SRCS_DIR := srcs
 OBJS_DIR := objs
 
-CHANGABLE_HEADERS = philo.h structure.h consts.h
+CHANGABLE_HEADERS = philo.h err.h structure.h consts.h
 
 SRCS := $(addprefix $(SRCS_DIR)/, main.c err.c utils.c init.c free_destroy.c \
-child_thread.c child_thread_utils.c time_sleep.c )
+)
 
 OBJS := $(SRCS:$(SRCS_DIR)/%.c=$(OBJS_DIR)/%.o)
 
