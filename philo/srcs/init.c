@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 16:16:02 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:58:20 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ static void	philo_value_init(t_info *info, t_philo *philos)
 		philos[idx].eat_count = 0;
 		philos[idx].alive = 1;
 		philos[idx].info = info;
+		philos[idx].should_count = 1;
+		if (info->number_of_times_each_philosopher_must_eat == 0)
+			philos[idx].should_count = 0;
 	}
 }
 

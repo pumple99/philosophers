@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 20:52:07 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/04 15:08:05 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:57:16 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 {
 	int			philo_index;
 	long long	last_eat_time;
+	int			should_count;
 	int			eat_count;
 	int			alive;
 	t_info		*info;

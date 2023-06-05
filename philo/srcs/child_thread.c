@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:20:39 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 16:13:57 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:58:42 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,7 @@ static int	philo_eat(t_philo *philo)
 	pthread_mutex_lock(philo->info->fork_mutex + philo->philo_index);
 	philo->info->fork[philo->philo_index] = for_left_hand;
 	pthread_mutex_unlock(philo->info->fork_mutex + philo->philo_index);
-	philo->eat_count += 1;
-	if (philo->eat_count == \
+	if (philo->should_count && ++(philo->eat_count) == \
 	philo->info->number_of_times_each_philosopher_must_eat)
 		one_philo_complete(philo);
 	return (0);

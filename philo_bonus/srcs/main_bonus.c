@@ -6,13 +6,11 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 21:14:01 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:42:29 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <semaphore.h>
 #include <unistd.h>
-#include <sys/wait.h>
 
 #include "../philo_bonus.h"
 #include "../structure_bonus.h"
@@ -28,9 +26,7 @@ int	main(int argc, char *argv[])
 	if (check_input(argc, argv))
 		return (1);
 	error = init_basic(argc, argv, &philo);
-	if (!error)
-		run(philo);
-	free_all(philo, error);
+	run(philo, error);
 }
 
 static int	check_input(int argc, char *argv[])
@@ -48,13 +44,14 @@ static int	check_input(int argc, char *argv[])
 	return (0);
 }
 
-static void	run(t_philo *philo)
+static void	run(t_philo *philo, int error)
 {
 	int		idx;
-	int		idx2;
 	int		fork_fail;
 	pid_t	child;
 
+	if (error)
+		return (free_all(philo, error));
 	child = 1;
 	fork_fail = 0;
 	while (child != 0 && ++philo->philo_index < philo->number_of_philosophers)
@@ -70,4 +67,5 @@ static void	run(t_philo *philo)
 	}
 	if (child == 0)
 		return (run_child(philo));
+	return (run_parent(philo, fork_fail));
 }

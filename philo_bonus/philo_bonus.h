@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:34:30 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 20:13:58 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:33:00 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,8 @@ long long	get_elapse_time(t_philo *philo, long long now);
 int			ft_strlen(char *str);
 int			is_positive_int(char *str);
 int			fool_atoi(char *str);
+
+//err_bonus.c
+int			write_err(char *str);
 
 #endif

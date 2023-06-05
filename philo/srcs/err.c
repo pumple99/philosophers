@@ -6,12 +6,12 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:09:14 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/05/22 17:13:48 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/05 21:32:22 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "philo.h"
+#include "../philo.h"
 
 int	write_err(char *str)
 {
