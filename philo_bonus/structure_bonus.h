@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:42:43 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 20:03:26 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:41:54 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include <unistd.h>
 # include <semaphore.h>
+
+typedef struct s_char_num
+{
+	char	in_char[10];
+}	t_char_num;
 
 typedef struct s_philo
 {
@@ -32,6 +37,8 @@ typedef struct s_philo
 	sem_t		*fork_sem;
 	sem_t		*waiting_sem;
 	sem_t		*complete_sem;
+	t_char_num	*philo_num;
+	sem_t		**last_eat_sem;
 }	t_philo;
 
 #endif

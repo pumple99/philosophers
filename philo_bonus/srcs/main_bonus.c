@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 21:42:29 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/06 22:24:55 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "../structure_bonus.h"
 
 static int	check_input(int argc, char *argv[]);
-static void	run(t_philo *philo);
+static void	run(t_philo *philo, int error);
 
 int	main(int argc, char *argv[])
 {
@@ -46,7 +46,6 @@ static int	check_input(int argc, char *argv[])
 
 static void	run(t_philo *philo, int error)
 {
-	int		idx;
 	int		fork_fail;
 	pid_t	child;
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:11:46 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/02 16:47:54 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/06 17:38:28 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,26 @@ int	fool_atoi(char *str)
 		++str;
 	}
 	return (val);
+}
+
+void	fool_itoa(char str[], int number)
+{
+	int num;
+	int	idx;
+
+	num = number;
+	idx = 0;
+	while (num > 0)
+	{
+		num /= 10;
+		++idx;
+	}
+	str[idx] = 0;
+	while (--idx >= 0)
+	{
+		str[idx] = "0123456789"[number % 10];
+		number /= 10;
+	}
 }
 
 int	is_positive_int(char *str)
