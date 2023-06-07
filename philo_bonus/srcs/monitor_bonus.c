@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 18:19:06 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/06 23:22:41 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:53:46 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static void	simulation_end(t_philo *philo);
 int	make_monitor(t_philo *philo)
 {
 	pthread_t	thread;
+
 	if (pthread_create(&thread, 0, routine, (void *)philo))
 		return (simulation_end(philo), 1);
 	return (0);
@@ -43,7 +44,6 @@ static long long	get_time_left(t_philo *philo, long long now)
 	return (time_left);
 }
 
-#include <unistd.h>
 static void	*routine(void *arg)
 {
 	t_philo		*philo;
@@ -62,9 +62,8 @@ static void	*routine(void *arg)
 			philo->philo_index + 1, DIED);
 			simulation_end(philo);
 		}
-		// else
-		// 	usleep(1);
-		// 	// optimize_sleep(now, time_left);
+		else if (time_left > 1000)
+			optimize_sleep(now, time_left);
 	}
 	return (0);
 }

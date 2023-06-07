@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 19:11:46 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/06 17:38:28 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/07 16:32:47 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	fool_atoi(char *str)
 
 void	fool_itoa(char str[], int number)
 {
-	int num;
+	int	num;
 	int	idx;
 
 	num = number;

@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 20:44:52 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/06 22:52:57 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/07 18:12:04 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	philo_fork_eat(t_philo *philo)
 	now = get_time_us();
 	sem_wait(philo->last_eat_sem[philo->philo_index]);
 	philo->last_eat_time = now;
-	sem_post(philo->last_eat_sem[philo->philo_index]);
 	write_message(philo, EATING);
 	optimize_sleep(now, philo->time_to_eat);
 	sem_post(philo->fork_sem);
@@ -53,6 +52,7 @@ static void	philo_fork_eat(t_philo *philo)
 	if (philo->number_of_times_each_philosopher_must_eat && \
 	++philo->eat_count == philo->number_of_times_each_philosopher_must_eat)
 		sem_post(philo->complete_sem);
+	sem_post(philo->last_eat_sem[philo->philo_index]);
 }
 
 static void	philo_sleep_think(t_philo *philo)
