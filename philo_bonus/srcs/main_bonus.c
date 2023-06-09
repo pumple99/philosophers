@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 17:08:01 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/06 22:24:55 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/09 22:02:56 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	check_input(int argc, char *argv[])
 	while (++i < argc)
 	{
 		if (!is_positive_int(argv[i]))
-			return (write_err("Not positive or too big integer"));
+			return (write_err("Please put 1 ~ 9 digit positive integer!"));
 	}
 	return (0);
 }
