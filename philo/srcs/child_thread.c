@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/24 17:20:39 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 21:58:42 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/11 16:36:17 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,10 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	while (1)
 	{
-		if (get_fork(philo, for_right_hand))
-			break ;
-		if (get_fork(philo, for_left_hand))
-			break ;
-		if (philo_eat(philo))
-			break ;
-		if (philo_sleep(philo))
+		if (get_fork(philo, for_right_hand) || \
+		get_fork(philo, for_left_hand) || \
+		philo_eat(philo) || \
+		philo_sleep(philo))
 			break ;
 	}
 	return (0);
