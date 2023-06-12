@@ -6,7 +6,7 @@
 /*   By: seunghoy <seunghoy@student.42.kr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 19:47:37 by seunghoy          #+#    #+#             */
-/*   Updated: 2023/06/05 21:58:20 by seunghoy         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:19:41 by seunghoy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,18 @@ static int	malloc_init(t_info *info, t_philo **philos)
 	int	idx;
 	int	total;
 
-	idx = -1;
 	total = info->number_of_philosophers;
 	info->fork = (t_status *)malloc(sizeof(t_status) * \
 	info->number_of_philosophers);
+	info->fork_mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
+	* info->number_of_philosophers);
+	*philos = (t_philo *)malloc(sizeof(t_philo) * info->number_of_philosophers);
+	info->threads = (pthread_t *)malloc(sizeof(pthread_t) \
+	* info->number_of_philosophers);
+	if (info->fork == 0 || info->fork_mutex == 0 || \
+	*philos == 0 || info->threads == 0)
+		return (1);
+	idx = -1;
 	while (++idx < total)
 	{
 		if (idx % 2 == 0)
@@ -46,14 +54,7 @@ static int	malloc_init(t_info *info, t_philo **philos)
 		else
 			info->fork[idx] = for_left_hand;
 	}
-	info->fork_mutex = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
-	* info->number_of_philosophers);
-	*philos = (t_philo *)malloc(sizeof(t_philo) * info->number_of_philosophers);
-	info->threads = (pthread_t *)malloc(sizeof(pthread_t) \
-	* info->number_of_philosophers);
-	if (info->fork && info->fork_mutex && *philos && info->threads)
-		return (0);
-	return (1);
+	return (0);
 }
 
 static int	fork_mutex_init(t_info *info)
